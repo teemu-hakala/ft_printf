@@ -6,7 +6,7 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 12:01:16 by thakala           #+#    #+#              #
-#    Updated: 2022/02/14 16:17:44 by thakala          ###   ########.fr        #
+#    Updated: 2022/02/14 20:53:36 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ H_FILES = eval_tests
 
 CTEST_PATHS = $(addsuffix $(CTEST_SUFFIX), $(addprefix $(SOURCES)/, $(FILES)))
 H_PATHS = $(addsuffix $(HEADER_SUFFIX), $(addprefix $(INCLUDES)/, $(H_FILES)))
-INCLUSIONS = $(foreach header, $(H_PATHS), -I $(header))
+INCLUSIONS = $(foreach inc, $(INCLUDES), -I $(inc))
 OBJECT_PATHS = $(addsuffix $(OBJECT_SUFFIX), $(addprefix $(OBJECTS)/, $(FILES)))
 OUTPUT_PATHS = $(addsuffix $(OUTPUT_SUFFIX), $(addprefix $(PROGRAMS)/, $(FILES)))
 
@@ -44,15 +44,15 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g -Wconversion
 
-.PHONY all
+.PHONY: all
 all: $(NAME)
 
-$(NAME): pre_requisites $(OBJECT_PATHS) Makefile
+$(NAME): pre_requisites $(OBJECT_PATHS) Makefile.c.test
 	touch pre_requisites
 	$(CC) $(CFLAGS) -o $@ $(OBJECT_PATHS)
 
-$(OBJECT_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c $(H_PATHS) Makefile
-	$(CC) $(CFLAGS) $(H_PATHS) $(INCLUSIONS) -c $< -o $@
+$(OBJECT_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c.test $(H_PATHS) Makefile.c.test
+	$(CC) $(CFLAGS) $(INCLUSIONS) -xc -c $< -o $@
 
 
 pre_requisites: $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
@@ -68,13 +68,13 @@ $(C_PATHS):
 
 
 
-.PHONY clean
+.PHONY: clean
 clean:
 #	/bin/rm -f $(OBJECT_PATHS)
 
-.PHONY fclean
+.PHONY: fclean
 fclean: clean
 #	/bin/rm -f $(NAME)
 
-.PHONY re
+.PHONY: re
 re: fclean all
