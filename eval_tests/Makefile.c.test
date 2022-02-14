@@ -6,16 +6,18 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 12:01:16 by thakala           #+#    #+#              #
-#    Updated: 2022/02/14 12:43:01 by thakala          ###   ########.fr        #
+#    Updated: 2022/02/14 16:17:44 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = $(OUTPUT_FILES)
+NAME = $(OUTPUT_PATHS)
 
 FILES = main0
 
 CTEST_SUFFIX = .c.test
 OUTPUT_SUFFIX = .out
+OBJECT_SUFFIX = .o
+HEADER_SUFFIX = .h
 
 SOURCES = sources
 OBJECTS = objects
@@ -23,6 +25,56 @@ INCLUDES = includes
 LIBRARIES = libraries
 PROGRAMS = programs
 
-CTEST_FILES = $(addsuffix $(addprefix $(FILES), $(SOURCES)/), $(CTEST_SUFFIX))
-OBJECT_FILES = $(addsuffix $(addprefix $(FILES), $(OBJECTS)/), .o)
-OUTPUT_FILES = $(addsuffix $(addprefix $(FILES), $(PROGRAMS)/), $(OUTPUT_SUFFIX))
+FOLDER_LIST = \
+	$(SOURCES) \
+	$(OBJECTS) \
+	$(INCLUDES) \
+	$(LIBRARIES) \
+	$(PROGRAMS)
+
+H_FILES = eval_tests
+
+CTEST_PATHS = $(addsuffix $(CTEST_SUFFIX), $(addprefix $(SOURCES)/, $(FILES)))
+H_PATHS = $(addsuffix $(HEADER_SUFFIX), $(addprefix $(INCLUDES)/, $(H_FILES)))
+INCLUSIONS = $(foreach header, $(H_PATHS), -I $(header))
+OBJECT_PATHS = $(addsuffix $(OBJECT_SUFFIX), $(addprefix $(OBJECTS)/, $(FILES)))
+OUTPUT_PATHS = $(addsuffix $(OUTPUT_SUFFIX), $(addprefix $(PROGRAMS)/, $(FILES)))
+
+CC = clang
+CFLAGS = -Wall -Wextra -Werror
+CFLAGS += -g -Wconversion
+
+.PHONY all
+all: $(NAME)
+
+$(NAME): pre_requisites $(OBJECT_PATHS) Makefile
+	touch pre_requisites
+	$(CC) $(CFLAGS) -o $@ $(OBJECT_PATHS)
+
+$(OBJECT_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c $(H_PATHS) Makefile
+	$(CC) $(CFLAGS) $(H_PATHS) $(INCLUSIONS) -c $< -o $@
+
+
+pre_requisites: $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
+
+$(FOLDER_LIST):
+	mkdir -p $@
+
+$(H_PATHS):
+	touch $@
+
+$(C_PATHS):
+	touch $@
+
+
+
+.PHONY clean
+clean:
+#	/bin/rm -f $(OBJECT_PATHS)
+
+.PHONY fclean
+fclean: clean
+#	/bin/rm -f $(NAME)
+
+.PHONY re
+re: fclean all
