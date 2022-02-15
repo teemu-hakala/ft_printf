@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eval_tests.h                                       :+:      :+:    :+:   */
+/*   helpers.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 16:05:01 by thakala           #+#    #+#             */
-/*   Updated: 2022/02/15 11:11:17 by thakala          ###   ########.fr       */
+/*   Created: 2022/02/15 11:10:20 by thakala           #+#    #+#             */
+/*   Updated: 2022/02/15 11:10:43 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EVAL_TESTS_H
-# define EVAL_TESTS_H
-# include "helpers.h"
-# include <stdio.h>
+#ifndef HELPERS_H
+# define HELPERS_H
+
+
 
 #endif

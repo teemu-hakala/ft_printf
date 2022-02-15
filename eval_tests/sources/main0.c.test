@@ -1,0 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main0.c.test                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 10:25:24 by thakala           #+#    #+#             */
+/*   Updated: 2022/02/15 11:10:03 by thakala          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "eval_tests.h"
+
+static int	tests(const char *format, ...)
+{
+	start_redirection();
+	ft_printf(format, ...);
+	printf(format, ...);
+	reset_redirection();
+	return (0);
+}
+
+int	main(void)
+{
+
+	return (0);
+}
