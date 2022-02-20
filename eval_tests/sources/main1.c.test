@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eval_tests.h                                       :+:      :+:    :+:   */
+/*   main1.c.test                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 16:05:01 by thakala           #+#    #+#             */
-/*   Updated: 2022/02/18 15:01:33 by thakala          ###   ########.fr       */
+/*   Created: 2022/02/15 10:25:24 by thakala           #+#    #+#             */
+/*   Updated: 2022/02/20 12:27:19 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EVAL_TESTS_H
-# define EVAL_TESTS_H
-# include "helpers.h"
-# include <stdio.h>
-# include <stdarg.h>
-#endif
+#include "eval_tests.h"
+#define LIBC_OUTPUT_FORMAT "001.libc.output"
+#define FT_OUTPUT_FORMAT "001.ft.output"
+#define FORMAT_STRING "Hello!\n"
+
+static int	tests(void)
+{
+	start_redirection(LIBC_OUTPUT_FORMAT);
+	printf(FORMAT_STRING);
+	reset_redirection();
+	start_redirection(FT_OUTPUT_FORMAT);
+	ft_printf(FORMAT_STRING);
+	reset_redirection();
+	return (0);
+}
+
+int	main(void)
+{
+	tests();
+	return (0);
+}

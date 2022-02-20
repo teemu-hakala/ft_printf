@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main0.c.test                                       :+:      :+:    :+:   */
+/*   main2.c.test                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:25:24 by thakala           #+#    #+#             */
-/*   Updated: 2022/02/20 12:31:20 by thakala          ###   ########.fr       */
+/*   Updated: 2022/02/20 12:27:26 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "eval_tests.h"
-#define LIBC_OUTPUT_FORMAT "000.libc.output"
-#define FT_OUTPUT_FORMAT "000.ft.output"
-#define FORMAT_STRING "Hello!"
+#define LIBC_OUTPUT_FORMAT "002.libc.output"
+#define FT_OUTPUT_FORMAT "002.ft.output"
+#define FORMAT_STRING "Hello!%c"
+#define VARIABLES '\n'
 
 static int	tests(void)
 {
-	int	fd;
-
-	start_redirection(LIBC_OUTPUT_FORMAT, &fd);
+	start_redirection(LIBC_OUTPUT_FORMAT);
 	printf(FORMAT_STRING);
 	reset_redirection();
 	start_redirection(FT_OUTPUT_FORMAT);
