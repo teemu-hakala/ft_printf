@@ -6,7 +6,7 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 12:01:16 by thakala           #+#    #+#              #
-#    Updated: 2022/02/14 20:53:36 by thakala          ###   ########.fr        #
+#    Updated: 2022/02/23 13:35:39 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ FILES = main0
 CTEST_SUFFIX = .c.test
 OUTPUT_SUFFIX = .out
 OBJECT_SUFFIX = .o
-HEADER_SUFFIX = .h
+HEADER_SUFFIX = .h.c.test
 
 SOURCES = sources
 OBJECTS = objects

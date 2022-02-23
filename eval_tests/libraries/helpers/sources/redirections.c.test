@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirections.c                                     :+:      :+:    :+:   */
+/*   redirections.c.test                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:07:27 by thakala           #+#    #+#             */
-/*   Updated: 2022/02/20 13:06:33 by thakala          ###   ########.fr       */
+/*   Updated: 2022/02/23 13:34:56 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "helpers.h"
+#include "helpers.h.c.test"
 
 void	start_redirection(const char *filename, int *fd)
 {
@@ -19,5 +19,5 @@ void	start_redirection(const char *filename, int *fd)
 
 void	reset_redirection()
 {
-	
+
 }
