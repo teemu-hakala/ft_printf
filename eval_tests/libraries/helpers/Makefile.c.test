@@ -6,7 +6,68 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 10:56:38 by thakala           #+#    #+#              #
-#    Updated: 2022/02/15 10:56:39 by thakala          ###   ########.fr        #
+#    Updated: 2022/02/23 13:55:33 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = libhelp.a
+
+FILES = \
+	redirections
+
+CTEST_SUFFIX = .c.test
+OBJECT_SUFFIX = .o
+HEADER_SUFFIX = .h.c.test
+
+SOURCES = sources
+OBJECTS = objects
+INCLUDES = includes
+
+FOLDER_LIST = \
+	$(SOURCES) \
+	$(OBJECTS) \
+	$(INCLUDES)
+
+H_FILES = helpers
+
+CTEST_PATHS = $(addsuffix $(CTEST_SUFFIX), $(addprefix $(SOURCES)/, $(FILES)))
+H_PATHS = $(addsuffix $(HEADER_SUFFIX), $(addprefix $(INCLUDES)/, $(H_FILES)))
+INCLUSIONS = $(foreach inc, $(INCLUDES), -I $(inc))
+OBJECT_PATHS = $(addsuffix $(OBJECT_SUFFIX), $(addprefix $(OBJECTS)/, $(FILES)))
+
+CC = clang
+CFLAGS = -Wall -Wextra -Werror
+CFLAGS += -g -Wconversion
+
+.PHONY: all
+all: $(NAME)
+
+$(NAME): pre_requisites $(OBJECT_PATHS) Makefile.c.test
+	touch pre_requisites
+	$(CC) $(CFLAGS) -o $@ $(OBJECT_PATHS)
+
+$(OBJECT_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c.test $(H_PATHS) Makefile.c.test
+	$(CC) $(CFLAGS) $(INCLUSIONS) -xc -c $< -o $@
+
+
+pre_requisites: $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
+
+$(FOLDER_LIST):
+	mkdir -p $@
+
+$(H_PATHS):
+	touch $@
+
+$(C_PATHS):
+	touch $@
+
+.PHONY: clean
+clean:
+#	/bin/rm -f $(OBJECT_PATHS)
+
+.PHONY: fclean
+fclean: clean
+#	/bin/rm -f $(NAME)
+
+.PHONY: re
+re: fclean all

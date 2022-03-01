@@ -6,25 +6,27 @@
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:25:24 by thakala           #+#    #+#             */
-/*   Updated: 2022/02/20 12:31:20 by thakala          ###   ########.fr       */
+/*   Updated: 2022/02/23 14:56:23 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "eval_tests.h"
-#define LIBC_OUTPUT_FORMAT "000.libc.output"
-#define FT_OUTPUT_FORMAT "000.ft.output"
+#include "eval_tests.h.c.test"
+#include "ft_printf.h"
+#define LIBC_OUTPUT_FORMAT "output/000.libc.output"
+#define FT_OUTPUT_FORMAT "output/000.ft.output"
 #define FORMAT_STRING "Hello!"
 
 static int	tests(void)
 {
-	int	fd;
+	int		output;
+	int		dupout;
 
-	start_redirection(LIBC_OUTPUT_FORMAT, &fd);
+	start_redirection(LIBC_OUTPUT_FORMAT, &output, &dupout);
 	printf(FORMAT_STRING);
-	reset_redirection();
-	start_redirection(FT_OUTPUT_FORMAT);
+	reset_redirection(&output);
+	start_redirection(FT_OUTPUT_FORMAT, &output, &dupout);
 	ft_printf(FORMAT_STRING);
-	reset_redirection();
+	reset_redirection(&output);
 	return (0);
 }
 

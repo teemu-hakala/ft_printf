@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main1.c.test                                       :+:      :+:    :+:   */
+/*   convert_character.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 10:25:24 by thakala           #+#    #+#             */
-/*   Updated: 2022/02/23 14:36:47 by thakala          ###   ########.fr       */
+/*   Created: 2022/02/23 14:22:31 by thakala           #+#    #+#             */
+/*   Updated: 2022/02/23 15:29:36 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "eval_tests.h.c.test"
 #include "ft_printf.h"
-#define LIBC_OUTPUT_FORMAT "output/001.libc.output"
-#define FT_OUTPUT_FORMAT "output/001.ft.output"
-#define FORMAT_STRING "Hello!\n"
 
-static int	tests(void)
+uint64_t	convert_character(const t_format format, void *argument)
 {
-	start_redirection(LIBC_OUTPUT_FORMAT);
-	printf(FORMAT_STRING);
-	reset_redirection();
-	start_redirection(FT_OUTPUT_FORMAT);
-	ft_printf(FORMAT_STRING);
-	reset_redirection();
-	return (0);
-}
 
-int	main(void)
-{
-	tests();
-	return (0);
 }

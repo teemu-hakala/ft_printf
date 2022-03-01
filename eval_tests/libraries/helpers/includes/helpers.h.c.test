@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.h                                          :+:      :+:    :+:   */
+/*   helpers.h.c.test                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:10:20 by thakala           #+#    #+#             */
-/*   Updated: 2022/02/20 12:30:12 by thakala          ###   ########.fr       */
+/*   Updated: 2022/02/23 14:44:28 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 # define HELPERS_H
 
 # include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
+
+void	start_redirection(const char *filename, int *output, int *dupout);
+void	reset_redirection(int *dupout);
 
 #endif
