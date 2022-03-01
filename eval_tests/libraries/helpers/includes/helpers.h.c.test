@@ -6,13 +6,13 @@
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:10:20 by thakala           #+#    #+#             */
-/*   Updated: 2022/02/23 14:44:28 by thakala          ###   ########.fr       */
+/*   Updated: 2022/03/01 14:23:02 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HELPERS_H
 # define HELPERS_H
-
+# include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
