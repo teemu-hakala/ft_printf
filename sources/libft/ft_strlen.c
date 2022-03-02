@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/10/31 13:04:18 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/21 19:10:35 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+size_t	ft_strlen(const char *s)
 {
-	return (0);
+	size_t	l;
+
+	l = 0;
+	while (*s++)
+		l++;
+	return (l);
 }

@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/10 18:30:31 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/24 19:44:53 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+void	ft_strdel(char **as)
 {
-	return (0);
+	ft_memdel((void **)as);
 }

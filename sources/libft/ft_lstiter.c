@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/21 13:20:41 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/23 15:15:58 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	return (0);
+	if (lst)
+		f(lst);
+	lst = lst->next;
+	while (lst)
+	{
+		f(lst);
+		lst = lst->next;
+	}
 }

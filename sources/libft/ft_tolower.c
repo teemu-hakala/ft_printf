@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: thakala <thakala@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/04 11:30:16 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/04 13:27:05 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+int	ft_tolower(int c)
 {
-	return (0);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 'a' - 'A');
+	return (c);
 }

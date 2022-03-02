@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/20 19:55:30 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/29 21:52:30 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+void	ft_lstdel(t_list **alst, void (*del)(void *c, size_t s))
 {
-	return (0);
+	t_list	*upcoming;
+	t_list	*current;
+
+	current = *alst;
+	while (current)
+	{
+		upcoming = current->next;
+		if (current)
+			ft_lstdelone(&current, del);
+		current = upcoming;
+	}
+	*alst = NULL;
 }

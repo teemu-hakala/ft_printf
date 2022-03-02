@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memrplc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/12/22 04:46:27 by thakala           #+#    #+#             */
+/*   Updated: 2022/01/07 03:50:23 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+void	*ft_memrplc(void *mem, size_t len, int target, int filler)
 {
-	return (0);
+	size_t	idx;
+	void	*spot;
+
+	idx = 0;
+	while (1)
+	{
+		spot = ft_memchr(mem + idx, target, len - idx);
+		if (!spot)
+			break ;
+		*(char *)spot = (char)filler;
+		idx = (size_t)(spot - mem) + 1;
+	}
+	return (mem);
 }

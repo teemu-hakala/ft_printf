@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/20 09:36:55 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/20 09:40:05 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+#include <stdlib.h>
+
+void	*ft_memdup(const void *memory, size_t size)
 {
-	return (0);
+	void	*duplicate;
+
+	duplicate = malloc(size);
+	if (duplicate)
+		ft_memcpy(duplicate, memory, size);
+	return (duplicate);
 }

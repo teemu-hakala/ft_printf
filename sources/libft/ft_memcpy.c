@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/04 19:58:22 by thakala           #+#    #+#             */
+/*   Updated: 2021/12/04 19:03:43 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	return (0);
+	if (n == 0 || (!dst && !src))
+		return (dst);
+	while (n--)
+		((unsigned char *)dst)[n] = ((unsigned char *)src)[n];
+	return (dst);
 }

@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/28 12:22:39 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/28 16:33:55 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+char	*ft_strpbrk(const char *s, const char *charset)
 {
-	return (0);
+	size_t	c;
+
+	--s;
+	while (*++s)
+	{
+		c = 0;
+		while (charset[c])
+			if (charset[c++] == *s)
+				return ((char *)s);
+	}
+	return (NULL);
 }

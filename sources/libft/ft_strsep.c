@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strsep.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/28 12:41:27 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/28 16:31:15 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+char	*ft_strsep(char **stringp, const char *delim)
 {
-	return (0);
+	char	*beginning;
+
+	beginning = *stringp;
+	if (!beginning)
+		return (beginning);
+	*stringp = ft_strpbrk(*stringp, delim);
+	if (*stringp)
+		*(*stringp)++ = '\0';
+	return (beginning);
 }

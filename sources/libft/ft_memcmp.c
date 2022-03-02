@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/06 05:38:53 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/26 12:04:39 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	return (0);
+	if (!n)
+		return (0);
+	while (*((unsigned char *)s1++) == *((unsigned char *)s2++) && --n)
+		;
+	return ((int)(*((unsigned char *)s1 - 1) - *((unsigned char *)s2 - 1)));
 }

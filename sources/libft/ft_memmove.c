@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/08 14:35:21 by thakala           #+#    #+#             */
+/*   Updated: 2021/12/16 20:11:46 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	return (0);
+	size_t	i;
+
+	i = (size_t)(-1);
+	if (src < dst)
+		while (--len + 1)
+			((char *)dst)[len] = ((char *)src)[len];
+	else if (src > dst)
+		while (++i < len)
+			((char *)dst)[i] = ((char *)src)[i];
+	return (dst);
 }

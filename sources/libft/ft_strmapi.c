@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/14 18:29:05 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/29 21:51:49 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+#include <stdlib.h>
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int i, char c))
 {
-	return (0);
+	char			*new_beginning;
+	size_t			length;
+
+	length = ft_strlen(s);
+	new_beginning = (char *)malloc(sizeof(char) * (++length));
+	if (new_beginning)
+	{
+		new_beginning[--length] = '\0';
+		while (--length + 1)
+			new_beginning[length] = f((unsigned int)length, s[length]);
+	}
+	return (new_beginning);
 }

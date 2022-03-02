@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/06 15:38:59 by thakala           #+#    #+#             */
+/*   Updated: 2021/12/12 17:21:30 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	return (0);
+	size_t	l_dst;
+
+	l_dst = ft_strlen(dst);
+	if (l_dst >= dstsize)
+		return (ft_strlen(src) + dstsize);
+	while (*src && dstsize - l_dst - 1)
+		dst[l_dst++] = *src++;
+	dst[l_dst] = '\0';
+	while (*src++)
+		l_dst++;
+	return (l_dst);
 }

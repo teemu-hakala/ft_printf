@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/14 18:57:58 by thakala           #+#    #+#             */
+/*   Updated: 2021/12/05 13:29:20 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	return (0);
+	if (!n)
+		return (1);
+	while (*s1++ == *s2++ && *(s1 - 1) && --n)
+		;
+	return (*(s1 - 1) == *(s2 - 1));
 }

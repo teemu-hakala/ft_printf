@@ -1,16 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strcspn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/28 19:07:00 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/29 09:10:55 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+size_t	ft_strcspn(const char *s, const char *charset)
 {
-	return (0);
+	size_t	span;
+	size_t	c;
+	char	found;
+
+	if (!*s)
+		return (0);
+	span = 0;
+	while (1)
+	{
+		c = 0;
+		found = 0;
+		while (charset[c])
+		{
+			if (charset[c++] == *s)
+			{
+				found = 1;
+				break ;
+			}
+		}
+		span += !found;
+		if (found || !*++s)
+			return (span);
+	}
 }

@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/10 15:25:07 by thakala           #+#    #+#             */
+/*   Updated: 2021/12/05 13:45:30 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	return (0);
+	size_t	n;
+
+	while (len-- && *haystack)
+	{
+		n = 0;
+		while (len >= n && needle[n] && haystack[n] == needle[n])
+			n++;
+		if (!needle[n])
+			return ((char *)haystack);
+		haystack++;
+	}
+	if (!*needle)
+		return ((char *)haystack);
+	return (NULL);
 }

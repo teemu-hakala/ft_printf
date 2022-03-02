@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/07 18:04:07 by thakala           #+#    #+#             */
+/*   Updated: 2021/12/12 17:23:59 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+char	*ft_strrchr(const char *s, int c)
 {
-	return (0);
+	const char	*result;
+
+	result = NULL;
+	while (*s)
+		if (*s++ == (char)c)
+			result = s - 1;
+	if (!c)
+		result = s;
+	return ((char *)result);
 }

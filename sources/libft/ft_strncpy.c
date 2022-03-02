@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Created: 2021/11/04 16:37:45 by thakala           #+#    #+#             */
+/*   Updated: 2021/11/23 15:02:55 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include <string.h>
+
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	return (0);
+	char	*new_beginning;
+
+	new_beginning = dst;
+	while (len-- && *src)
+		*dst++ = *src++;
+	while (len-- + 1)
+		*dst++ = '\0';
+	return (new_beginning);
 }
