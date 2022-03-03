@@ -6,7 +6,7 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 12:01:16 by thakala           #+#    #+#              #
-#    Updated: 2022/03/02 13:16:16 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/03 11:47:21 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ $(OBJECT_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c.test $(H_PATHS) Makefile.c.test
 	$(CC) $(CFLAGS) $(INCLUSIONS) -xc -c $< -o $@
 
 
-pre_requisites: $(FT_PRINTF) $(HELPERS) $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
+pre_requisites: $(FT_PRINTF) $(HELPERS) $(FOLDER_LIST) $(H_PATHS) $(CTEST_PATHS)
 
 $(FT_PRINTF):
 	make -C ..
@@ -88,7 +88,7 @@ $(FOLDER_LIST):
 $(H_PATHS):
 	touch $@
 
-$(C_PATHS):
+$(CTEST_PATHS):
 	touch $@
 
 
