@@ -1,3 +1,6 @@
 men/
 objects/
-db_objects/
+debug_objects/
+.pre_requisites
+.debug_pre_requisites
+libftprintf.a

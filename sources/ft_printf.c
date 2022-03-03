@@ -6,11 +6,12 @@
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 04:27:09 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/02 12:45:06 by thakala          ###   ########.fr       */
+/*   Updated: 2022/03/03 12:53:43 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_printf(const char *format, ...)
 {
+	(void)format;
 	return (0);
 }

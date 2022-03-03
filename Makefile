@@ -6,7 +6,7 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 04:31:09 by thakala           #+#    #+#              #
-#    Updated: 2022/03/03 12:29:58 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/03 13:07:54 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,18 +47,21 @@ H_PATHS = $(addsuffix .h, $(addprefix $(INCLUDES)/, $(H_FILES)))
 INCLUSIONS = $(foreach inc, $(INCLUDES), -I $(inc))
 O_PATHS = $(addsuffix .o, $(addprefix $(OBJECTS)/, $(FILES)))
 
+FT_LIB = ft
+FT_DIR = $(LIBRARIES)/libft
+
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 
 .PHONY: all
 all: $(NAME)
 
-$(NAME): .pre_requisites $(OBJECT_PATHS) Makefile
+$(NAME): .pre_requisites $(O_PATHS) Makefile
 	touch .pre_requisites
-	ar rcs $(NAME) $(OBJECT_PATHS)
+	ar rcs $(NAME) $(O_PATHS)
 
-$(OBJECT_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c $(H_PATHS) Makefile
-	$(CC) $(CFLAGS) $(INCLUSIONS) -c $< -o $@
+$(O_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c $(H_PATHS) Makefile
+	$(CC) $(CFLAGS) $(INCLUSIONS) -c $< -o $@ -L$(FT_DIR) -l$(FT_LIB)
 
 .pre_requisites: $(LIBFT_NAME) $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
 
@@ -80,6 +83,7 @@ clean:
 #	/bin/rm -f $(OBJECT_PATHS)
 
 .PHONY: fclean
+fclean:
 #	/bin/rm -f $(NAME)
 
 .PHONY: re
@@ -93,6 +97,7 @@ DEBUG_OBJECT_PATHS = $(addsuffix $(DEBUG_SUFFIX), \
 	$(addprefix $(DEBUG_OBJECTS)/, $(FILES)))
 DEBUG_FLAGS = $(CFLAGS) -g -Wconversion
 
+.PHONY: debug
 debug: $(DEBUG_NAME)
 
 $(DEBUG_NAME): .debug_pre_requisites $(DEBUG_OBJECT_PATHS) Makefile
@@ -101,7 +106,8 @@ $(DEBUG_NAME): .debug_pre_requisites $(DEBUG_OBJECT_PATHS) Makefile
 
 .debug_pre_requisites: $(LIBFT_NAME) $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
 
-$(DEBUG_OBJECT_PATHS): $(DEBUG_OBJECTS)/%$(DEBUG_SUFFIX):$(SOURCES)/%.c $(H_PATHS) Makefile
+$(DEBUG_OBJECT_PATHS): \
+	$(DEBUG_OBJECTS)/%$(DEBUG_SUFFIX):$(SOURCES)/%.c $(H_PATHS) Makefile
 	$(CC) $(DEBUG_FLAGS) $(INCLUSIONS) -c $< -o $@
 #
 ## DEBUG
