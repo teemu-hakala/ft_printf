@@ -6,13 +6,13 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/31 11:42:48 by thakala           #+#    #+#              #
-#    Updated: 2022/01/02 09:08:11 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/04 15:32:03 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-FUNCTIONS = \
+FILES = \
 	ft_memset \
 	ft_bzero \
 	ft_memcpy \
@@ -85,17 +85,32 @@ FUNCTIONS = \
 	ft_lstpop \
 	ft_memrplc
 
-SRCS = $(foreach src, $(FUNCTIONS), $(addsuffix .c, $(src)))
+SRCS = $(addsuffix .c, $(FILES))
 
-OBJS = $(foreach obj, $(FUNCTIONS), $(addsuffix .o, $(obj)))
+OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
+OBJ_DIR = objects
 
-COMP_FLAGS = -Wall -Wextra -Werror
+FOLDER_LIST = $(OBJ_DIR)
+
+H_PATHS = includes/libft.h
+
+CC = clang
+
+CCFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
-	gcc $(COMP_FLAGS) -c $(SRCS)
+$(NAME): .pre_requisites $(OBJS) Makefile
+	touch .pre_requisites
 	ar rcs $(NAME) $(OBJS)
+
+$(OBJS): $(OBJ_DIR)/%.o:%.c $(H_PATHS) Makefile
+	$(CC) $(CCFLAGS) -c $< -o $@
+
+.pre_requisites: $(FOLDER_LIST)
+
+$(FOLDER_LIST):
+	mkdir -p $@
 
 clean:
 	/bin/rm -f $(OBJS)

@@ -6,7 +6,7 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 04:31:09 by thakala           #+#    #+#              #
-#    Updated: 2022/03/04 13:23:29 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/04 14:56:57 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,6 @@ $(NAME): .pre_requisites $(O_PATHS) Makefile
 
 $(O_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c $(H_PATHS) Makefile
 	$(CC) $(CFLAGS) $(INCLUSIONS) -c $< -o $@
-#	\$(LIBFT_PATH)
 
 .pre_requisites: $(LIBFT_NAME) $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
 
