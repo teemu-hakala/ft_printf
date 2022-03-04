@@ -6,7 +6,7 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 04:31:09 by thakala           #+#    #+#              #
-#    Updated: 2022/03/03 13:07:54 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/04 13:23:29 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME = libftprintf.a
 LIBFT_NAME = libft
 
 LIBFT_DIR = $(LIBRARIES)/libft
+
+LIBFT_PATH = $(LIBFT_DIR)/libft.a
 
 FILES = \
 	convert_character \
@@ -48,7 +50,6 @@ INCLUSIONS = $(foreach inc, $(INCLUDES), -I $(inc))
 O_PATHS = $(addsuffix .o, $(addprefix $(OBJECTS)/, $(FILES)))
 
 FT_LIB = ft
-FT_DIR = $(LIBRARIES)/libft
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
@@ -61,13 +62,14 @@ $(NAME): .pre_requisites $(O_PATHS) Makefile
 	ar rcs $(NAME) $(O_PATHS)
 
 $(O_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c $(H_PATHS) Makefile
-	$(CC) $(CFLAGS) $(INCLUSIONS) -c $< -o $@ -L$(FT_DIR) -l$(FT_LIB)
+	$(CC) $(CFLAGS) $(INCLUSIONS) -c $< -o $@
+#	\$(LIBFT_PATH)
 
 .pre_requisites: $(LIBFT_NAME) $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
 
 .PHONY: $(LIBFT_NAME)
 $(LIBFT_NAME):
-	make -C libraries/libft
+	make -C $(LIBFT_DIR)
 
 $(FOLDER_LIST):
 	mkdir -p $@
@@ -81,10 +83,12 @@ $(C_PATHS):
 .PHONY: clean
 clean:
 #	/bin/rm -f $(OBJECT_PATHS)
+#	make -C $(LIBFT_DIR) clean
 
 .PHONY: fclean
 fclean:
 #	/bin/rm -f $(NAME)
+#	make -C $(LIBFT_DIR) fclean
 
 .PHONY: re
 re: fclean all
