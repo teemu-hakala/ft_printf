@@ -6,7 +6,7 @@
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 05:48:32 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/01 13:23:09 by thakala          ###   ########.fr       */
+/*   Updated: 2022/03/06 05:24:19 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 
 # define MFW_ASTERISK '*'
 
+typedef struct s_str
+{
+	char		*str;
+	uint64_t	len;
+}	t_str;
 
 typedef struct s_format
 {
@@ -41,21 +46,21 @@ typedef uint64_t			t_conversion(const t_format *format, \
 static const char			g_conversion_specifier[] = "cspdiouxXf";
 
 int							ft_printf(const char *format, ...);
-uint64_t					convert_character(const t_format *format, \
+t_str						convert_character(const t_format *format, \
 	void *argument);
-uint64_t					convert_string(const t_format *format, \
+t_str						convert_string(const t_format *format, \
 	void *argument);
-uint64_t					convert_pointer(const t_format *format, \
+t_str						convert_pointer(const t_format *format, \
 	void *argument);
-uint64_t					convert_signed(const t_format *format, \
+t_str						convert_signed(const t_format *format, \
 	void *argument);
-uint64_t					convert_octal(const t_format *format, \
+t_str						convert_octal(const t_format *format, \
 	void *argument);
-uint64_t					convert_unsigned(const t_format *format, \
+t_str						convert_unsigned(const t_format *format, \
 	void *argument);
-uint64_t					convert_hexadecimal(const t_format *format, \
+t_str						convert_hexadecimal(const t_format *format, \
 	void *argument);
-uint64_t					convert_float(const t_format *format, \
+t_str						convert_float(const t_format *format, \
 	void *argument);
 
 static t_conversion			*g_conversions[] = {
