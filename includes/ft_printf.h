@@ -6,7 +6,7 @@
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 05:48:32 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/06 05:24:19 by thakala          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:53:28 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_format
 	uint64_t	conversion_specifier;
 }	t_format;
 
-typedef uint64_t			t_conversion(const t_format *format, \
+typedef t_str				t_conversion(const t_format *format, \
 	void *argument);
 
 static const char			g_conversion_specifier[] = "cspdiouxXf";
