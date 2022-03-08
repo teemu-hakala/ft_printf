@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile-2.c.test                                  :+:      :+:    :+:    #
+#    Makefile.c.test                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 12:01:16 by thakala           #+#    #+#              #
-#    Updated: 2022/03/08 19:50:42 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/08 20:10:43 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,9 +67,9 @@ CFLAGS += -g -Wconversion
 .PHONY: all
 all: $(NAME)
 
-$(NAME): .pre_requisites $(PROGRAMS)/%$(OUTPUT_SUFFIX):%(OBJECTS)/%(OBJECT_SUFFIX) Makefile.c.test
+$(NAME): $(PROGRAMS)/%$(OUTPUT_SUFFIX):$(OBJECTS)/%$(OBJECT_SUFFIX) .pre_requisites Makefile.c.test
 	touch .pre_requisites
-	$(CC) $(CFLAGS) -o $@ $(OBJECT_PATHS) \
+	$(CC) $(CFLAGS) -o $@ $< \
 		$(foreach lib_path, $(LIBRARIES), -L$(lib_path)) \
 		$(foreach lib, $(LIB_LIST), -l$(lib))
 
