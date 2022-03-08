@@ -6,14 +6,14 @@
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:21:26 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/08 20:21:31 by thakala          ###   ########.fr       */
+/*   Updated: 2022/03/08 20:25:04 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "eval_tests.h.c.test"
 #include "ft_printf.h"
-#define LIBC_OUTPUT_FORMAT "output/002.libc.output"
-#define FT_OUTPUT_FORMAT "output/002.ft.output"
+#define LIBC_OUTPUT_FORMAT "output/003.libc.output"
+#define FT_OUTPUT_FORMAT "output/003.ft.output"
 #define FORMAT_STRING "Hello!%c"
 #define VARIABLES '\0'
 
