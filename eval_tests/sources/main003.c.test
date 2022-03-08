@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main002.c.test                                     :+:      :+:    :+:   */
+/*   main003.c.test                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 10:25:24 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/08 20:21:36 by thakala          ###   ########.fr       */
+/*   Created: 2022/03/08 20:21:26 by thakala           #+#    #+#             */
+/*   Updated: 2022/03/08 20:21:31 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define LIBC_OUTPUT_FORMAT "output/002.libc.output"
 #define FT_OUTPUT_FORMAT "output/002.ft.output"
 #define FORMAT_STRING "Hello!%c"
-#define VARIABLES '\n'
+#define VARIABLES '\0'
 
 static int	tests(void)
 {

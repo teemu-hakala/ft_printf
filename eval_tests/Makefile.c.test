@@ -6,12 +6,12 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 12:01:16 by thakala           #+#    #+#              #
-#    Updated: 2022/03/08 20:10:43 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/08 20:21:44 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = $(OUTPUT_PATHS)
-MAX_TEST_CASE = 0
+MAX_TEST_CASE = 3
 
 FT_PRINTF = ../libftprintf.a
 
@@ -20,7 +20,8 @@ HELPERS = libraries/helpers/libhelp.a
 FILES = \
 	main000 \
 	main001 \
-	main002
+	main002 \
+	main003
 
 CTEST_SUFFIX = .c.test
 OUTPUT_SUFFIX = .out
