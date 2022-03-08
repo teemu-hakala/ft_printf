@@ -6,7 +6,7 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 12:01:16 by thakala           #+#    #+#              #
-#    Updated: 2022/03/08 19:29:55 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/08 19:50:42 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FT_PRINTF = ../libftprintf.a
 HELPERS = libraries/helpers/libhelp.a
 
 FILES = \
-	main000 #\
+	main000 \
 	main001 \
 	main002
 
@@ -57,7 +57,8 @@ INCLUSIONS = $(foreach inc, \
 	libraries/helpers/includes/ \
 	../includes/, -I $(inc))
 OBJECT_PATHS = $(addsuffix $(OBJECT_SUFFIX), $(addprefix $(OBJECTS)/, $(FILES)))
-OUTPUT_PATHS = $(addsuffix $(OUTPUT_SUFFIX), $(addprefix $(PROGRAMS)/, $(FILES)))
+OUTPUT_FILES = $(addsuffix $(OUTPUT_SUFFIX), $(FILES))
+OUTPUT_PATHS = $(addprefix $(PROGRAMS)/, $(OUTPUT_FILES))
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
@@ -66,7 +67,7 @@ CFLAGS += -g -Wconversion
 .PHONY: all
 all: $(NAME)
 
-$(NAME): .pre_requisites $(OBJECT_PATHS) Makefile.c.test
+$(NAME): .pre_requisites $(PROGRAMS)/%$(OUTPUT_SUFFIX):%(OBJECTS)/%(OBJECT_SUFFIX) Makefile.c.test
 	touch .pre_requisites
 	$(CC) $(CFLAGS) -o $@ $(OBJECT_PATHS) \
 		$(foreach lib_path, $(LIBRARIES), -L$(lib_path)) \

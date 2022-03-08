@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main2.c.test                                       :+:      :+:    :+:   */
+/*   main002.c.test                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:25:24 by thakala           #+#    #+#             */
-/*   Updated: 2022/02/23 14:36:58 by thakala          ###   ########.fr       */
+/*   Updated: 2022/03/08 19:35:09 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@
 
 static int	tests(void)
 {
-	start_redirection(LIBC_OUTPUT_FORMAT);
-	printf(FORMAT_STRING);
-	reset_redirection();
-	start_redirection(FT_OUTPUT_FORMAT);
-	ft_printf(FORMAT_STRING);
-	reset_redirection();
+	int		output;
+	int		dupout;
+
+	start_redirection(LIBC_OUTPUT_FORMAT, &output, &dupout);
+	printf(FORMAT_STRING, VARIABLES);
+	fflush(stdout);
+	reset_redirection(&output, &dupout);
+	start_redirection(FT_OUTPUT_FORMAT, &output, &dupout);
+	ft_printf(FORMAT_STRING, VARIABLES);
+	reset_redirection(&output, &dupout);
 	return (0);
 }
 
