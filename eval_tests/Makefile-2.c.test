@@ -6,11 +6,12 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 12:01:16 by thakala           #+#    #+#              #
-#    Updated: 2022/03/03 11:47:21 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/08 17:09:42 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = $(OUTPUT_PATHS)
+MAX_TEST_CASE = 0
 
 FT_PRINTF = ../libftprintf.a
 
@@ -31,6 +32,7 @@ OBJECTS = objects
 INCLUDES = includes
 LIBRARIES = libraries ..
 PROGRAMS = programs
+OUTPUTS = $(PROGRAMS)/output
 
 FOLDER_LIST = \
 	$(SOURCES) \
@@ -38,7 +40,7 @@ FOLDER_LIST = \
 	$(INCLUDES) \
 	$(LIBRARIES) \
 	$(PROGRAMS) \
-	$(PROGRAMS)/output
+	$(OUTPUTS)
 
 LIB_LIST = \
 	help \
@@ -64,8 +66,8 @@ CFLAGS += -g -Wconversion
 .PHONY: all
 all: $(NAME)
 
-$(NAME): pre_requisites $(OBJECT_PATHS) Makefile.c.test
-	touch pre_requisites
+$(NAME): .pre_requisites $(OBJECT_PATHS) Makefile.c.test
+	touch .pre_requisites
 	$(CC) $(CFLAGS) -o $@ $(OBJECT_PATHS) \
 		$(foreach lib_path, $(LIBRARIES), -L$(lib_path)) \
 		$(foreach lib, $(LIB_LIST), -l$(lib))
@@ -74,7 +76,7 @@ $(OBJECT_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c.test $(H_PATHS) Makefile.c.test
 	$(CC) $(CFLAGS) $(INCLUSIONS) -xc -c $< -o $@
 
 
-pre_requisites: $(FT_PRINTF) $(HELPERS) $(FOLDER_LIST) $(H_PATHS) $(CTEST_PATHS)
+.pre_requisites: $(FT_PRINTF) $(HELPERS) $(FOLDER_LIST) $(H_PATHS) $(CTEST_PATHS)
 
 $(FT_PRINTF):
 	make -C ..
@@ -91,7 +93,23 @@ $(H_PATHS):
 $(CTEST_PATHS):
 	touch $@
 
+OUTPUT_PATHS_RUN = $(addprefix run-, $(OUTPUT_PATHS))
 
+.PHONY: test
+test: all clear_output $(OUTPUT_PATHS_RUN)
+	@echo "Ran all test cases!"
+
+$(OUTPUT_PATHS_RUN):
+	@echo "RUNNING:\t\t$(patsubst run-%, %, $@)"
+	$(shell (cd programs && ./$(strip $(patsubst run-programs/%, %, $@))))
+
+OUTPUT_CASES = $(addprefix $(OUTPUTS)/, $(shell seq -f %03g 0 $(MAX_TEST_CASE)))
+LIBC_OUTPUTS = $(addsuffix .libc.output, $(OUTPUT_CASES))
+FT_OUTPUTS = $(addsuffix .ft.output, $(OUTPUT_CASES))
+
+.PHONY: clear_output
+clear_output:
+	/bin/rm -f $(LIBC_OUTPUTS) $(FT_OUTPUTS)
 
 .PHONY: clean
 clean:

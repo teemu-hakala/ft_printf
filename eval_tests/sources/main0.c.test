@@ -6,7 +6,7 @@
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:25:24 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/08 16:14:57 by thakala          ###   ########.fr       */
+/*   Updated: 2022/03/08 16:40:56 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	tests(void)
 	int		dupout;
 
 	start_redirection(LIBC_OUTPUT_FORMAT, &output, &dupout);
-	write(STDOUT_FILENO, "1", 1);
 	printf(FORMAT_STRING);
 	fflush(stdout);
 	reset_redirection(&output, &dupout);
