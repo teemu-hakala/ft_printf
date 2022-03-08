@@ -6,90 +6,87 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 04:31:09 by thakala           #+#    #+#              #
-#    Updated: 2022/03/06 05:11:14 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/08 20:50:54 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 LIBFT_NAME = libft
-
 LIBFT_DIR = $(LIBRARIES)/libft
-
-LIBFT_PATH = $(LIBFT_DIR)/libft.a
-
-LIBFT_OBJECT_PATHS = $(addprefix $(LIBFT_DIR), \
-	ft_abs.o \
-	ft_atoi.o \
-	ft_bzero.o \
-	ft_isalnum.o \
-	ft_isalpha.o \
-	ft_isascii.o \
-	ft_isdigit.o \
-	ft_isprint.o \
-	ft_isspace.o \
-	ft_itoa.o \
-	ft_lstadd.o \
-	ft_lstdel.o \
-	ft_lstdelone.o \
-	ft_lstiter.o \
-	ft_lstmap.o \
-	ft_lstnew.o \
-	ft_lstpop.o \
-	ft_memalloc.o \
-	ft_memccpy.o \
-	ft_memchr.o \
-	ft_memcmp.o \
-	ft_memcpy.o \
-	ft_memdel.o \
-	ft_memdup.o \
-	ft_memjoin.o \
-	ft_memmove.o \
-	ft_memrplc.o \
-	ft_memset.o \
-	ft_putchar.o \
-	ft_putchar_fd.o \
-	ft_putendl.o \
-	ft_putendl_fd.o \
-	ft_putnbr.o \
-	ft_putnbr_fd.o \
-	ft_putstr.o \
-	ft_putstr_fd.o \
-	ft_sign.o \
-	ft_strcat.o \
-	ft_strchr.o \
-	ft_strclr.o \
-	ft_strcmp.o \
-	ft_strcpy.o \
-	ft_strcspn.o \
-	ft_strdel.o \
-	ft_strdup.o \
-	ft_strequ.o \
-	ft_striter.o \
-	ft_striteri.o \
-	ft_strjoin.o \
-	ft_strlcat.o \
-	ft_strlcpy.o \
-	ft_strlen.o \
-	ft_strmap.o \
-	ft_strmapi.o \
-	ft_strncat.o \
-	ft_strncmp.o \
-	ft_strncpy.o \
-	ft_strnequ.o \
-	ft_strnew.o \
-	ft_strnstr.o \
-	ft_strpbrk.o \
-	ft_strrchr.o \
-	ft_strsep.o \
-	ft_strsplit.o \
-	ft_strspn.o \
-	ft_strspnsep.o \
-	ft_strstr.o \
-	ft_strsub.o \
-	ft_strtrim.o \
-	ft_tolower.o \
-	ft_toupper.o)
+LIBFT_OBJECTS_DIR = $(LIBFT_DIR)/objects
+LIBFT_OBJECT_PATHS = $(addsuffix .o, $(addprefix $(LIBFT_OBJECTS_DIR), \
+	ft_abs \
+	ft_atoi \
+	ft_bzero \
+	ft_isalnum \
+	ft_isalpha \
+	ft_isascii \
+	ft_isdigit \
+	ft_isprint \
+	ft_isspace \
+	ft_itoa \
+	ft_lstadd \
+	ft_lstdel \
+	ft_lstdelone \
+	ft_lstiter \
+	ft_lstmap \
+	ft_lstnew \
+	ft_lstpop \
+	ft_memalloc \
+	ft_memccpy \
+	ft_memchr \
+	ft_memcmp \
+	ft_memcpy \
+	ft_memdel \
+	ft_memdup \
+	ft_memjoin \
+	ft_memmove \
+	ft_memrplc \
+	ft_memset \
+	ft_putchar \
+	ft_putchar_fd \
+	ft_putendl \
+	ft_putendl_fd \
+	ft_putnbr \
+	ft_putnbr_fd \
+	ft_putstr \
+	ft_putstr_fd \
+	ft_sign \
+	ft_strcat \
+	ft_strchr \
+	ft_strclr \
+	ft_strcmp \
+	ft_strcpy \
+	ft_strcspn \
+	ft_strdel \
+	ft_strdup \
+	ft_strequ \
+	ft_striter \
+	ft_striteri \
+	ft_strjoin \
+	ft_strlcat \
+	ft_strlcpy \
+	ft_strlen \
+	ft_strmap \
+	ft_strmapi \
+	ft_strncat \
+	ft_strncmp \
+	ft_strncpy \
+	ft_strnequ \
+	ft_strnew \
+	ft_strnstr \
+	ft_strpbrk \
+	ft_strrchr \
+	ft_strsep \
+	ft_strsplit \
+	ft_strspn \
+	ft_strspnsep \
+	ft_strstr \
+	ft_strsub \
+	ft_strtrim \
+	ft_tolower \
+	ft_toupper))
 
 FILES = \
 	convert_character \
@@ -122,8 +119,6 @@ H_PATHS = $(addsuffix .h, $(addprefix $(INCLUDES)/, $(H_FILES)))
 INCLUSIONS = $(foreach inc, $(INCLUDES), -I $(inc))
 O_PATHS = $(addsuffix .o, $(addprefix $(OBJECTS)/, $(FILES)))
 
-FT_LIB = ft
-
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 
@@ -154,13 +149,13 @@ $(C_PATHS):
 
 .PHONY: clean
 clean:
-#	/bin/rm -f $(OBJECT_PATHS)
-#	make -C $(LIBFT_DIR) clean
+	/bin/rm -f $(O_PATHS)
+	make -C $(LIBFT_DIR) clean
 
 .PHONY: fclean
-fclean:
-#	/bin/rm -f $(NAME)
-#	make -C $(LIBFT_DIR) fclean
+fclean: clean
+	/bin/rm -f $(NAME)
+	make -C $(LIBFT_DIR) fclean
 
 .PHONY: re
 re: fclean all
@@ -185,5 +180,16 @@ $(DEBUG_NAME): .debug_pre_requisites $(DEBUG_OBJECT_PATHS) Makefile
 $(DEBUG_OBJECT_PATHS): \
 	$(DEBUG_OBJECTS)/%$(DEBUG_SUFFIX):$(SOURCES)/%.c $(H_PATHS) Makefile
 	$(CC) $(DEBUG_FLAGS) $(INCLUSIONS) -c $< -o $@
+
+.PHONY: debug-clean
+debug-clean:
+	/bin/rm -f $(DEBUG_OBJECT_PATHS)
+
+.PHONY: debug-fclean
+debug-fclean: debug-clean
+	/bin/rm -f $(DEBUG_NAME)
+
+.PHONY: debug-re
+debug-re: debug-fclean debug
 #
 ## DEBUG
