@@ -6,7 +6,7 @@
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:10:20 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/01 14:23:02 by thakala          ###   ########.fr       */
+/*   Updated: 2022/03/08 16:13:08 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include <stdio.h>
 
 void	start_redirection(const char *filename, int *output, int *dupout);
-void	reset_redirection(int *dupout);
+void	reset_redirection(int *output, int *dupout);
 
 #endif

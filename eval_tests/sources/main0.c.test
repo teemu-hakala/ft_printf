@@ -6,7 +6,7 @@
 /*   By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:25:24 by thakala           #+#    #+#             */
-/*   Updated: 2022/03/07 15:37:51 by thakala          ###   ########.fr       */
+/*   Updated: 2022/03/08 16:14:57 by thakala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ static int	tests(void)
 
 	start_redirection(LIBC_OUTPUT_FORMAT, &output, &dupout);
 	write(STDOUT_FILENO, "1", 1);
-	//printf(FORMAT_STRING);
-	reset_redirection(&output);
+	printf(FORMAT_STRING);
+	fflush(stdout);
+	reset_redirection(&output, &dupout);
 	start_redirection(FT_OUTPUT_FORMAT, &output, &dupout);
 	ft_printf(FORMAT_STRING);
-	reset_redirection(&output);
+	reset_redirection(&output, &dupout);
 	return (0);
 }
 
