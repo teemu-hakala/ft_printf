@@ -6,7 +6,7 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 10:56:38 by thakala           #+#    #+#              #
-#    Updated: 2022/03/01 14:24:58 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/08 19:27:25 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,15 +42,15 @@ CFLAGS += -g -Wconversion
 .PHONY: all
 all: $(NAME)
 
-$(NAME): pre_requisites $(OBJECT_PATHS) Makefile.c.test
-	touch pre_requisites
+$(NAME): .pre_requisites $(OBJECT_PATHS) Makefile.c.test
+	touch .pre_requisites
 	ar rcs ../$@ $(OBJECT_PATHS)
 
 $(OBJECT_PATHS): $(OBJECTS)/%.o:$(SOURCES)/%.c.test $(H_PATHS) Makefile.c.test
 	$(CC) $(CFLAGS) $(INCLUSIONS) -xc -c $< -o $@
 
 
-pre_requisites: $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
+.pre_requisites: $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
 
 $(FOLDER_LIST):
 	mkdir -p $@
