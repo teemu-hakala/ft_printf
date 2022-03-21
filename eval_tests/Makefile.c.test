@@ -6,22 +6,38 @@
 #    By: thakala <thakala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 12:01:16 by thakala           #+#    #+#              #
-#    Updated: 2022/03/08 20:22:39 by thakala          ###   ########.fr        #
+#    Updated: 2022/03/21 11:29:21 by thakala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = $(OUTPUT_PATHS)
+
 MAX_TEST_CASE = 3
+
+## Create a subdirectory for each test case and number them from 0 each.
+## sources/c/000_main_c.c.test
+MAX_TEST_CASE_c = 0
+MAX_TEST_CASE_s = 0
+MAX_TEST_CASE_p = 0
+MAX_TEST_CASE_d = 0
+MAX_TEST_CASE_i = 0
+MAX_TEST_CASE_o = 0
+MAX_TEST_CASE_u = 0
+MAX_TEST_CASE_x = 0
+MAX_TEST_CASE_X = 0
+MAX_TEST_CASE_f = 0
+MAX_TEST_CASE_percentage = 0
+MAX_TEST_CASE_e = 0
+MAX_TEST_CASE_g = 0
+MAX_TEST_CASE_b = 0
+MAX_TEST_CASE_r = 0
+MAX_TEST_CASE_k = 0
 
 FT_PRINTF = ../libftprintf.a
 
 HELPERS = libraries/helpers/libhelp.a
 
-FILES = \
-	main000 \
-	main001 \
-	main002 \
-	main003
+FILES = $(addprefix main, $(shell seq -f %03g 0 $(MAX_TEST_CASE)))
 
 CTEST_SUFFIX = .c.test
 OUTPUT_SUFFIX = .out
